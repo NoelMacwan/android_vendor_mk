@@ -7,7 +7,7 @@ ifeq ($(TARGET_CPU_ABI),arm64-v8a)
 PRODUCT_COPY_FILES += $(shell test -d vendor/mk/prebuilt/private/lib/arm64-v8a && \
     find vendor/mk/prebuilt/private/lib/arm64-v8a -name '*.so' \
     -printf '%p:system/lib64/%f ')
-ifeq ($(TARGET_CPU_ABI),armeabi-v7a)
+else ifeq ($(TARGET_CPU_ABI),armeabi-v7a)
 PRODUCT_COPY_FILES += $(shell test -d vendor/mk/prebuilt/private/lib/armeabi-v7a && \
     find vendor/mk/prebuilt/private/lib/armeabi-v7a -name '*.so' \
     -printf '%p:system/lib/%f ')
