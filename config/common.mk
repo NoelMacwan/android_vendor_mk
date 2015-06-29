@@ -120,6 +120,9 @@ PRODUCT_COPY_FILES += \
 # T-Mobile theme engine
 include vendor/mk/config/themes_common.mk
 
+# Mokee prebuilt
+include vendor/mk/config/mk_prebuilt.mk
+
 # Required MK libraries
 PRODUCT_PACKAGES += \
     mokee-phonelocation
