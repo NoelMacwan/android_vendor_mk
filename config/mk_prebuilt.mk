@@ -3,8 +3,19 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,vendor/mk/prebuilt/private/bin/$(MK_CPU_ABI),system/bin)
 
 # Use all private libraries
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*.so,vendor/mk/prebuilt/private/lib/$(MK_CPU_ABI),system/lib)
+ifeq ($(TARGET_CPU_ABI),arm64-v8a)
+PRODUCT_COPY_FILES += $(shell test -d vendor/mk/prebuilt/private/lib/arm64-v8a && \
+    find vendor/mk/prebuilt/private/lib/arm64-v8a -name '*.so' \
+    -printf '%p:system/lib64/%f ')
+ifeq ($(TARGET_CPU_ABI),armeabi-v7a)
+PRODUCT_COPY_FILES += $(shell test -d vendor/mk/prebuilt/private/lib/armeabi-v7a && \
+    find vendor/mk/prebuilt/private/lib/armeabi-v7a -name '*.so' \
+    -printf '%p:system/lib/%f ')
+else
+PRODUCT_COPY_FILES += $(shell test -d vendor/mk/prebuilt/private/lib/armeabi && \
+    find vendor/mk/prebuilt/private/lib/armeabi -name '*.so' \
+    -printf '%p:system/lib/%f ')
+endif
 
 # Use all third-party files
 PRODUCT_COPY_FILES += \
