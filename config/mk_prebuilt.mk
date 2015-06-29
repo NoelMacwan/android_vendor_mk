@@ -3,10 +3,10 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,vendor/mk/prebuilt/private/bin/$(MK_CPU_ABI),system/bin)
 
 # Use all private libraries
-ifeq ($(TARGET_CPU_ABI),arm64-v8a)
+ifeq ($(MK_CPU_ABI),arm64-v8a)
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*.so,vendor/mk/prebuilt/private/lib/arm64-v8a,system/lib64)
-else ifeq ($(TARGET_CPU_ABI),armeabi-v7a)
+else ifeq ($(MK_CPU_ABI),armeabi-v7a)
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*.so,vendor/mk/prebuilt/private/lib/armeabi-v7a,system/lib)
 else
