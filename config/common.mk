@@ -125,7 +125,7 @@ include vendor/mk/config/mk_prebuilt.mk
 
 # Required MK libraries
 PRODUCT_PACKAGES += \
-    mokee-phonelocation
+    mokee-phonelocation \
     jpush174
 
 # Required MK packages
